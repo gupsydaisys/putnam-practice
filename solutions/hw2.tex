@@ -1,0 +1,190 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithmicx}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algpascal}
+\usepackage{algc}
+\usepackage{tkz-graph}
+\usepackage{verbatim}
+
+\def\Name{Serena Gupta}  % Your name
+\def\SID{22830625}  % Your student ID number
+\def\Homework{2}%Number of Homework
+\def\Session{Fall 2015}
+
+\title{MATH 191 --- Fall 2015 --- Homework \Homework\ Solutions}
+\author{\Name, \SID}
+\markboth{MATH 191 --\Session\  Homework \Homework\ \Name}{\Name,\ \SID\ -------- Math 191 Problem Set \Homework}
+\pagestyle{myheadings}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproof{\text{  } \square}
+\newcommand{\p}[1]{\left(#1\right)}
+\renewcommand{\b}[1]{\left[#1\right]}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\mbp}{\mathbb{P}}
+\renewcommand{\P}[1]{\mathbb{P}\p{#1}}
+\renewcommand{\Pr}{\text{Pr}}
+\newcommand{\E}[1]{\mathbb{E}\b{#1}}
+\newcommand{\Var}[1]{\mathrm{Var}\p{#1}}
+\newcommand{\Cov}[1]{\mathrm{Cov}\p{#1}}
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\F}{\mathcal{F}}
+
+\textheight=9in
+\textwidth=6in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+\begin{document}
+\textbf{Contributions: } Eric Severson helped me get to the answer on the first question. 2 hours
+
+$\\$
+\textbf{1) } Suppose for a contradiction that every vertex has strictly less extended neighbors than neighbors.
+
+$\\$ Let $v_i$ be the $i$th neighbor of $v$ if you can get to $v$ from $v_i$ by traversing exactly $i$ edges.
+
+$\\$ \textbf{[Lemma 0]} Every vertex has deg$(v) > 0$. 
+$\\$\textbf{Proof:} Suppose that a vertex has no neighbors, then that vertex would have 0 neighbors and 0 extended neighbors which is a contradiction. 
+
+$\\$ \textbf{[Lemma 1]} If $v_i$ is the $i$th neighbor of some vertex $v$ where deg$(v) = n$, then deg$v_{i} < n-i+1$
+\textbf{Proof:} Since every vertex has strictly less extended neighbors than neighbors, for all $v_1$, deg$(v_1) < n$ (otherwise just that $v_1$ extended neighbor would result in there being at least as many extended neighbors as neighbors of $v$).  
+
+$\\$But then the same argument can be made for the neighbors of all $v_1$, the 2cd neighbors of $v$, and we get deg$(v_2) <$ deg$(v_1) < n$.  
+
+$\\$So then extending the process out the $i$th neighbor of $v$, we know that deg$(v_i)$ $<$ deg$(v_{i-1})$ $< \cdots <$ deg$(v_1) < n$.
+
+$\\$ Since the degree is strictly decreasing and starts at $n$, we know that deg$(v_{i}) < n-i+1$.
+
+$\\$ Okay now getting back to the main proof.
+
+$\\$ We know that the $n+1$ neighbor of $v$ must exist since each vertex has positive degree and thus you can always traverse $n+1$ edges and get to some vertex.
+
+$\\$ By $\textbf{Lemma 1}$, we know that $v_{n+1}$, the $n+1$th neighbor of $v$ has the property deg$(v_{n+1}) < 0$.
+
+$\\$ But by $\textbf{Lemma 0}$, we know that deg$(v_{n+1}) > 0$ so we have a contradiction and thus there exists some vertex with at least as many extended neighbors as neighbors. $\endproof$
+
+\newpage
+\textbf{2) } \textbf{Partial Progress: } 
+$\\$ Suppose there didn't exist 2 people such that between them they solved all the problems.
+
+$\\$ My approach assigns each person to a set of problems so that we have k sets of problems and then $k_i$ people in each set such that each person can only be associated with 1 set of problems (but each problem can appear in multiple sets).
+
+$\\$ Clearly there can't exist any person who solved all the problems (since then that person with any other person would have solved all the problems).
+
+$\\$ There also can't exist a person who has solved 5 of the problems.  Suppose not.  Then there exists some person, X, who solved all the problems but say problem a.  Now no person could have solved problem a or then we could pick the person who solved problem a and person X and we'll cover all the problems.  But this is a contradiction since at least 120 people solved each problem so it's not possible 0 people solved problem a.
+
+$\\$ Now, if any person solved 4 problems let's call them $p_0, p_1, p_2,$ and $p_3$.  If anyone else solved a different set of 4 problems, then we know that 3 must overlap with $p_0, p_1, p_2,$ and $p_3$ (if 2 or less overlapped you'd cover all the problems).  Thus if 4 problems were solved, we can say generally that there are at most 3 types of people who solved 4 problems, those that solved $p_0, p_1, p_2,$ and $p_3$, those that solved $p_0, p_1, p_2,$ and $p_4$, and those that solved $p_0, p_1, p_2,$ and $p_5$, where the $p_i$ is randomly assigned to each problem number.
+
+$\\$ Using similar logic, if any person solved 3 problems let's call them $p_0, p_1, p_2$.  If anyone else solved a different set of 3 problems, then we know that only 2 could have overlapped with $p_3, p_4, p_5$.  Thus if 3 problems were solved, we can say generally that there are at most 18 types of people who solved 3 problems.
+
+$\\$ If any person solved 2 problems, we can take any combo of 2 which is at most 30 sets.
+
+$\\$ And if any person solved 1 problem, then we have at most 6 sets.
+
+$\\$ If every person did 3 problems, to get each problem count to at least 120, we would need 120 people more people to reach our count of at least 720.  Thus at least 40 people do 4 problems (since no one could have done 5 or 6 problems).  But I'm not sure how much that helps.
+
+$\\$ It seems to me given these configurations (and especially because the sets go down if you choose multiple number) that you can't get 120 people at least in each group but I couldn't get the logic to work out. :/ 
+
+\newpage
+\textbf{3) } \boxed{8144865729}
+
+$\\$ \textbf{Progress: }
+
+$\\$ Let $(a_n)$ be the sequence such that
+$a_i  = \left\{\begin{matrix}
+(i - 1)^3 & \text{ if } i \text{ is odd } \\ 
+(i - 2)^3 + 1 & \text{ o.w. } 
+\end{matrix}\right.$
+
+$\\$ Note that $(a_n)$ is an increasing sequence of nonnegative integers.
+
+$\\$ Now we'll do a proof by induction.
+
+$\\$ I propose that for all $n \in \mathbb{Z}_{\ge 0}$, $n$ can be written uniquely in the form $a_i + 2a_j + 4a_k$ where $i, j, k$ are not neccesarily distinct.
+
+$\\$ Our base case for $n=0$ we get trivially from \textbf{Statement 1}.
+
+$\\$ Now we'll show for all $k > n$ for some $n > 1$, our proposition holds and that implies that the $k + 1$ case holds.
+
+$\\$ We know by our inductive hypothesis we can write k = $a_i + 2a_j + 4a_k$.  
+
+$\\$ If $a_i$ is even, $k + 1 = (a_i + 1) + 2a_j + 4a_k$.
+
+$\\$ Otherwise, $a_i = (i - 1)^3$.  I'm not actually really sure where to go from here.  I tried writing it out to look for patterns:
+
+\begin{align*}
+0 0 0 \\
+1 0 0 \\
+0 1 0 \\
+1 1 0 \\
+0 0 1 \\
+1 0 1 \\
+0 1 1 \\
+1 1 1 \\
+8 0 0 \\
+9 0 0 \\
+8 1 0 \\
+9 1 0 \\
+8 0 1 \\
+9 0 1 \\
+8 1 1 \\
+9 1 1 \\
+0 8 0 \\
+1 8 0 \\
+0 9 0 \\
+\end{align*}
+
+But I wasn't able to see anything too obvious.
+
+\newpage
+\textbf{4) } \textbf{Partial Progress: }
+$\\$ Here is what I figured out.
+
+$\\$ It was helpful to me rewording the problem as being a cicle with radius $c$ not touching any visible points centered at a lattie point.
+
+$\\$ You need a 1 off ascending sequence of $c$ integers where each number in the the sequence shares a factor with another 1 off ascending sequence of $c$ integers.  Both sequences clearly can't have any prime numbers.
+
+$\\$ Both sequences can't have any prime numbers which is where I got stuck since I found it difficult to generally find a sequence of $c$ integers (I'm pretty sure this is actually a very very hard problem to solve).
+
+\newpage
+\textbf{6) } \textbf{Partial Progress: }
+
+$\\$ Doing out examples I noticed that the sum came to be something odd and descending on top and the bottom was a power of 2.
+
+\newpage
+\textbf{7) } We'll do a prove by induction.
+$\\$ Proposition: For all $n \in \mathbb{Z}_{> 0}$, $n$ can be written as a the sum of distinct Fibonacci numbers.
+
+$\\$ We trivially get our bases cases for $n = 1$ and $n = 2$.
+
+$\\$ Now we'll show for all $k > n$ for some $n > 2$, our proposition holds and that implies that the $k + 1$ case holds.
+
+$\\$ Suppose that $k+1$ is a fibonacci number.  Then we are done since that is trivially is the sum of distinct Fibonacci numbers.
+
+$\\$ Now suppose that $k+1$ is not a F number.
+
+$\\$ Let's call $j$ and $i$ the biggest and second biggest F number strictly smaller than $k+1$, respectively.
+
+$\\$ We know by our inductive hypothesis that we can write all integers less than $i$ as a sum of distinct Fibonacci numbers (and clearly F numbers that are less than $i$).
+
+$\\$ We also know that $0 < k+1 - j < i$ since $j + i$ is the F number that occurs after $k+1$.
+
+$\\$ Thus for each number in $(j, j+i]$, we can write them as $j + l$ where $l \in [1, i]$.
+
+$\\$ We know by our inductive hypothesis that we can write all $l \in [1, i]$ as a sum of distinct Fibonacci numbers (and clearly using F numbers that are less than $i$).
+
+$\\$ Since $k+1$ is in $(j, j+i]$, we have shown that $k+1$ can be written as the sum of a distinct F numbers.
+
+$\\$ Thus our inductive hypothesis is proven and our proof is done. $\endproof$ 
+
+\newpage
+\textbf{9) } I spent probably around 15 hours on the problem set (though honestly I should have kept better track, I tend to work on it a little bit each day and also think about the problems when I go walking or something).  7 was definitely the easiest problem.  I thought the coprime question was pretty difficult and for number 3 I had a hard time articulating in logic my answer.  And I really ran out of time/steam for 4 and 6.
+
+
+\end{document}

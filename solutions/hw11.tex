@@ -1,0 +1,90 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithmicx}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algpascal}
+\usepackage{algc}
+\usepackage{tkz-graph}
+\usepackage{verbatim}
+
+\def\Name{Serena Gupta}  % Your name
+\def\SID{22830625}  % Your student ID number
+\def\Homework{11}%Number of Homework
+\def\Session{Fall 2015}
+
+\title{MATH 191 --- Fall 2015 --- Homework \Homework\ Solutions}
+\author{\Name, \SID}
+\markboth{MATH 191 --\Session\  Homework \Homework\ \Name}{\Name,\ \SID\ -------- Math 191 Problem Set \Homework}
+\pagestyle{myheadings}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproof{\text{  } \square}
+\newcommand{\p}[1]{\left(#1\right)}
+\renewcommand{\b}[1]{\left[#1\right]}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\mbp}{\mathbb{P}}
+\renewcommand{\P}[1]{\mathbb{P}\p{#1}}
+\renewcommand{\Pr}{\text{Pr}}
+\newcommand{\E}[1]{\mathbb{E}\b{#1}}
+\newcommand{\Var}[1]{\mathrm{Var}\p{#1}}
+\newcommand{\Cov}[1]{\mathrm{Cov}\p{#1}}
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\F}{\mathcal{F}}
+
+\textheight=9in
+\textwidth=6in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+\begin{document}
+
+$\\$ \textbf{3) } If $n$ is odd, $P(n+1) = 0$.  Otherwise (ie when $n$ is even), $P(n+1) = -1$.
+
+$\\$ \textbf{Proof: } Using Lagrange Interpolation, we get that:
+\begin{align*}
+P(x) = \sum_{k=0}^{n}\binom{n+1}{k}^{-1}\prod_{j=0 \text{ st } j \neq k}^{n}\frac{(x - j)}{(k - j)} \\
+\end{align*}
+
+$\\$ Thus putting as input $(n+1)$, we get:
+\begin{align*}
+P(n+1) &= \sum_{k=0}^{n}\binom{n+1}{k}^{-1}\prod_{j=0 \text{ st } j \neq k}^{n}\frac{(n + 1 - j)}{(k - j)} \\
+&= \sum_{k=0}^{n}\frac{(k)!(n+1 - k)!}{(n+1)!}\frac{\prod\limits_{i=n}^{k+1}(n + 1 - i)\prod\limits_{j=k-1}^{1}(n + 1 - j)}{\prod\limits_{i=n}^{k+1}(k - i)\prod\limits_{j=k-1}^{1}(k - j)} \\
+&= \sum_{k=0}^{n}\frac{(k)!(n+1 - k)!}{(n+1)!}\frac{(n-k)!\prod\limits_{j=k-1}^{1}(n + 1 - j)}{\prod\limits_{i=n}^{k+1}(k - i)\prod\limits_{j=k-1}^{1}(k - j)} \\
+&= \sum_{k=0}^{n}\frac{(k)!(n+1 - k)!}{(n+1)!}\frac{(n-k)!\frac{(n+1)!}{(n+1-k)!}}{\prod\limits_{i=n}^{k+1}(k - i)\prod\limits_{j=k-1}^{1}(k - j)} \\
+&= \sum_{k=0}^{n}\frac{(k)!(n+1 - k)!}{(n+1)!}\frac{(n-k)!\frac{(n+1)!}{(n+1-k)!}}{(n-k)!(-1)^{n-k}\prod\limits_{j=k-1}^{1}(k - j)} \\
+&= \sum_{k=0}^{n}\frac{(k)!(n+1 - k)!}{(n+1)!}\frac{(n-k)!\frac{(n+1)!}{(n+1-k)!}}{(n-k)!(-1)^{n-k}(k)!} \\
+&= \sum_{k=0}^{n}(-1)^{n-k} \\
+&= \left\{\begin{matrix}
+0 & \text{ if n is odd} \\ 
+1  & \text{ o.w.} & 
+\end{matrix}\right.\endproof
+\end{align*}
+
+\newpage
+\textbf{7) } Suppose towards a contradiction, that for any distance d, there are no 2 points of color red or yellow which are d apart.
+
+$\\$ Color a point yellow and draw a circle, $C_y$, whose center is the yellow point and with radius d.
+
+$\\$ Clearly in order for this condition to hold all points on the circumference of the circle must be red.
+
+$\\$ Now, draw another circle, $C_r$, with radius $d$ and whose center point is on the circumference of $C_y$.
+
+$\\$ All the points on the circumference of $C_r$ must be yellow but the circle intersects the $C_y$ so clearly at least 2 points are red.  
+
+$\\$ Thus we have a contradiction and it must be true that for one of the two colors $C$, it is strue that for any distance $d$, there are 2 points of color $C$ which are $d$ apart. $\endproof$
+
+\newpage
+\textbf{8) } The answer is 0 but I wasn't able to rigoriously prove why that's true.
+ 
+
+\newpage
+\textbf{9) } I spent probably 12 or so hours on it.  I liked the variety in problems this week!  I thought the matrix problems were hard.
+
+$\\$ Lagrange Interpolation can be used to find the least degree polynomial such that at each point $x_j$ assumes the corresponding value $y_i$.  The form the polynomial actually takes is exemplified in my solution to number 3.
+
+\end{document}

@@ -1,0 +1,206 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithmicx}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algpascal}
+\usepackage{algc}
+\usepackage{tkz-graph}
+\usepackage{verbatim}
+
+\def\Name{Serena Gupta}  % Your name
+\def\SID{22830625}  % Your student ID number
+\def\Homework{9}%Number of Homework
+\def\Session{Fall 2015}
+
+\title{MATH 191 --- Fall 2015 --- Homework \Homework\ Solutions}
+\author{\Name, \SID}
+\markboth{MATH 191 --\Session\  Homework \Homework\ \Name}{\Name,\ \SID\ -------- Math 191 Problem Set \Homework}
+\pagestyle{myheadings}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproof{\text{  } \square}
+\newcommand{\p}[1]{\left(#1\right)}
+\renewcommand{\b}[1]{\left[#1\right]}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\mbp}{\mathbb{P}}
+\renewcommand{\P}[1]{\mathbb{P}\p{#1}}
+\renewcommand{\Pr}{\text{Pr}}
+\newcommand{\E}[1]{\mathbb{E}\b{#1}}
+\newcommand{\Var}[1]{\mathrm{Var}\p{#1}}
+\newcommand{\Cov}[1]{\mathrm{Cov}\p{#1}}
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\F}{\mathcal{F}}
+
+\textheight=9in
+\textwidth=6in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+\begin{document}
+
+\newpage
+$\\$ \textbf{3) } \textbf{[Partial Proof]}  I tried to use precice words but I didn't rigoriously prove each lemma and I think sometimes I was too vague.  I just was kind of at a loss as to how to (or maybe it was that I ran out of time?) on how to do this problem succinetly.
+
+$\\$ Let's define the most clockwise point of a square touching S, called T, as that last point you would hit on T if you moved in a clockwise direction centered at the center of S.  (Same for counterclockwise point).
+
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+
+$\\$ \textbf{[Lemma 0]} Consider the situation where you are placing unit squares to touch S such that the maximum number of squares touch S and you are currently in the position where there is \textbf{EXACTLY 1 unit square, call it T,} touching S so far.  If you keep on placing unit squares, there eventually will be 1 square that is closest to T in the clockwise direction and 1 square that is closest to T in the counterclockwise direction (these squares need not be unique but only 1 square will match each description).
+$\\$ \textbf{Proof:} Suppose there are two squares that are equally close to T in WLOG the clockwise direction, then that's only possible if they are stacked on top of each other which would be that both squares can't be touching S so that's a contradiction and there can only exist one square. $\endproof$
+
+$\\$ \textbf{[Lemma 1]} Consider the situation where you are placing unit squares to touch S such that the maximum number of squares touch S and you are currently in the position where there is \textbf{EXACTLY 1 unit square, call it T,} touching S so far. Then in order to get to the maximum number of squares, the next move that leads to the maximum number of squares touching S can be adding the square that at the end will be the closest square to T in the clockwise direction.
+$\\$ \textbf{Proof:} It doesn't matter the order in which you place the squares in this problem, all you would like to do is to maximize the number touching S so you can always place as your next move the square that will be closest to T in the clockwise direction since at some point that square needs to be placed. $\endproof$
+
+$\\$ \textbf{[Definition 0]} Consider the situation where you are placing unit squares to touch S such that the maximum number of squares touch S and you are currently in the position where there is \textbf{AT LEAST 1 unit square, where the last square placed is L and the first square place is T,} touching S so far and you have placed them in clockwise order which by \textbf{[Lemma 2]} we know still leads to the maximum number of squares touching S.  Drop a line that goes through the point furthest clockwise on L and that is perpedicular to the side of S that point lies on the side of (if the point is on the corner of S, make the line intersect that corner of S and the point furthest clockwise on L).  Drop another line that goes through the point furthest counterwise on T and that is perpedicular to the side of S that point lies on the side of (if the point is on the corner of S, make the line intersect that corner of S and the point furthest counterclockwise on T).  Let \textbf{\underline{the perimeter left}} be the total area of the perimeter line segments on S that are in the clockwise direction in between the line through the furthest clockwise point on L and the line through the furthest counterclockwise point on T.  Note due to squares being placed in their final clockwise position, the perimeter left is exactly where all the rest of the squares that haven't been place have to touch at some point.
+
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+
+$\\$ \textbf{[Lemma 2]} Consider the situation where you are placing unit squares to touch S such that the maximum number of squares touch S and there is at least 1 square touching S so far.  Then in order to get the maximum number of squares touching S from that point, the move that leads to the maximum number of squares at the end touching S is to always add a unit square in the clockwise direction of the side of any touching unit square such that \textbf{\underline{the perimeter left}} is maximized.
+$\\$ \textbf{Proof:} Suppose towards a contradiction that the best move was to place in the clockwise direction the next square, call it $S_{i+1}$, so that it didn't maximize the perimeter left, call this move $M_{not maximized}$.  Then by placing $S_{i+1}$ to maximize the perimeter left, you could make all the same moves after as you would if you did the $M_{not maximized}$ move since the perimeter left defines exactly where all the next squares can be placed.  Thus it can't be true that you will do worse. $\endproof$
+
+$\\$ \textbf{[Lemma 3]} Consider the situation where you are placing unit squares to touch S such that the maximum number of squares touch S and there are currently no squares touching S. Then in order to get the maximum number of squares touching S, you should place the first square such that \textbf{\underline{the perimeter left}} is maximized ie .
+$\\$ \textbf{Proof:} I couldn't proof this.  Here is my attempt.  Suppose you never make the move to place the first square, call it T, so that only the corner of T touches the corner of S and the sides of T connected to S are perpedicular (which is the only way to get 4 as the perimeter left).  Then at some point you have to have made a move that looks like one of the following:
+
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+
+$\\$ In each case, using Lemma 2, we know that we'll end up with the following:
+
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+$\\$
+
+$\\$ I didn't explain the algorithm in detail for each: just running out of steam. $\endproof$
+
+$\\$ Alright, now. let's get back to the main proof.  Now the way to maximize the number of squares touching S is to place each additional square in a clockwise manner so as to maximize the perimeter left after you add each square by Lemma 2.  
+
+$\\$ By lemma 3, the only way to get 4 (the maximum for the perimeter left) is to place the first square, call it T, so that only the corner of T touches the corner of S and the sides of T connected to S are perpedicular.  WLOG say the corner of S is the northeast corner.
+
+$\\$ The next square by Lemma 2 should share the most clockwise side of the last square, any other configuration would take up more than 1 of the perimeter left.  And for similar reasons, you should keep placing the squares in a clockwise direction with sides touching until you've hit the side of the initial square T.
+
+$\\$ The maximum number of squares from this algorithm (which by Lemma 2 produces the maximum number of touching squares of S) is 8 so our statement is false. $\endproof$
+
+\newpage
+$\\$ \textbf{5) } We'll first show there exists some fixed point for $f$.
+
+$\\$ Suppose f is continuous function on the real numbers and there exists an $a$ such that $f(f(f(a))) = a$.
+
+$\\$ Let $c$ be defined so that $f(a) = c$ \textbf{[Equation 1]}.
+
+$\\$ By definition, $f(c) = c$  \textbf{[Equation 2]}.
+
+$\\$ And since $f(f(f(a))) = a$, $f(f(c)) = a$  \textbf{[Equation 3]}.
+
+$\\$ Let's define a new function $g(x) = f(x) - x$.
+
+$\\$ Thus using Equation 1, 2, and 3, we know:
+\begin{align*}
+g(a) &= c - a \quad &\textbf{[Equation 4]}\\
+g(c) &= f(c) - c \quad &\textbf{[Equation 5]} \\
+g(f(c)) &= a - f(c) \quad &\textbf{[Equation 6]}\\
+\end{align*}
+
+$\\$ Since Equations 4, 5, and 6 are symmetric, we can WLOG say that $a \le f(c) \le c$.  This tell us:
+\begin{align*}
+g(a) &= c - a \ge 0 \\
+g(c) &= f(c) - c \le 0 \\
+g(f(c)) &= a - f(c) \le 0
+\end{align*}
+
+$\\$ Since $g$ is continuous on $[a, c]$ and $g(a) \ge 0$ and $g(c) \le 0$, we know by the intermediate value theorem that there exists some point $b$ such that $g(b) = 0$.
+
+$\\$ Since $g(b) = 0,$ we get that $0 = g(b) = f(b) - b$ so $b$ is a fixed point for the function $f$ $\endproof$.
+
+\newpage
+$\\$ \textbf{7) } 
+$\\$ Let $X_i$ be the $i$th number chosen uniformly between $[0, 1]$.
+
+$\\$ Clearly, $\textbf{E}[X_i] = \frac{1}{2}$.
+
+$\\$ Since each $X_i$ is independent, we can denote the sum of two numers chosen as:
+\begin{align*}
+\textbf{E}[X_1 + X_2] &= \\
+&= \textbf{E}[X_1] + \textbf{E}[X_2] \quad \text{[Since each } X_i\text{ is independent so we can do linearity of expectations]} \\
+&= \frac{1}{2} + \frac{1}{2} \\
+&\ge 1
+\end{align*}
+
+$\\$ Thus in two trials, you will get to at least 1 (clearly 1 trial will be $\frac{1}{2}$ so you will be expected to do 2 trials).
+
+\newpage
+$\\$ \textbf{8) } \textbf{[Progress]} The determinant is always 0.
+
+$\\$ Let taking all row differences be defined for a n by n matrix as for all $i$ such that $n \ge i \ge 1$, we let row $i$ equal the element wise subtraction of row $i-1$ from row $i$ (starting at $i=n$ and decreasing $i$ so that we're always subtracting the origial row).
+
+$\\$ \textbf{[Lemma 0]} We want to show that given any $k \ge 0$, for any $n \ge k+2$, if you take all row differences $k$ times, then the bottom two rows will have every element equal to $k!$.
+$\\$ \textbf{Proof:} I'm not actually sure how to go about providing this but I'm pretty sure from doing a lot of examples that it's true. But here is my observations.
+$\\$ After taking all row differece $k$ times, I (noticed and can't prove) each element on in the last two row will be of the form for $m = n, n+1, \cdots, 2n-1$,
+\begin{align*}
+\sum_{i=0}^{k}\binom{k}{i}(-1)^i(m-i)^k = k! \\
+\end{align*}
+
+$\\$ By Lemma 0, we know that given any $k \ge 0$, for any $n \ge k+2$, if you take all row differences $k$ times, then at least $2$ rows will have every element equal to $k!$.  Thus if we let one of those rows be the difference of the two rows, we'll get a row of zeros and we know that means the determinant of that matrix is 0.  Since we only added rows together, the determinant of the original matrix will be the same and thus 0.
+
+\newpage
+\textbf{9) } Total of 14 hours.  I spent a lot of time on number 8 and just way too much time on number 3.  I really liked this pset!
+
+$\\$ The intermediate value theorem states that if $f$ is a continuous function on the interval $[a, b]$, then it takes on every value between $f(a)$ and $f(b)$ at some point within the interval.
+
+
+
+
+\end{document}

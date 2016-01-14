@@ -1,0 +1,169 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithmicx}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algpascal}
+\usepackage{algc}
+\usepackage{tkz-graph}
+\usepackage{verbatim}
+
+\def\Name{Serena Gupta}  % Your name
+\def\SID{22830625}  % Your student ID number
+\def\Homework{1}%Number of Homework
+\def\Session{Fall 2015}
+
+\title{MATH 191 --- Fall 2015 --- Homework \Homework\ Solutions}
+\author{\Name, \SID}
+\markboth{MATH 191 --\Session\  Homework \Homework\ \Name}{\Name,\ \SID\ -------- Math 191 Problem Set \Homework}
+\pagestyle{myheadings}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproof{\text{  } \square}
+\newcommand{\p}[1]{\left(#1\right)}
+\renewcommand{\b}[1]{\left[#1\right]}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\mbp}{\mathbb{P}}
+\renewcommand{\P}[1]{\mathbb{P}\p{#1}}
+\renewcommand{\Pr}{\text{Pr}}
+\newcommand{\E}[1]{\mathbb{E}\b{#1}}
+\newcommand{\Var}[1]{\mathrm{Var}\p{#1}}
+\newcommand{\Cov}[1]{\mathrm{Cov}\p{#1}}
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\F}{\mathcal{F}}
+
+\textheight=9in
+\textwidth=6in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+\begin{document}
+\section{} Multiply through by $c$, in the second and third equation to get:
+\begin{align*}
+cab + c^2 + 12 &= 23c \textbf{ (2) }\\
+12a + c^2b &= 28c \textbf{ (3) }
+\end{align*}
+
+$\\$ Substitute the first equation into the updated second and third equation to get:
+\begin{align*}
+8cb - cb^2 + c^2 + 12 - 23c &= 0 \textbf{ (2) }\\
+12*8 - 12b + c^2*b - 28c &= 0 \textbf{ (3) }
+\end{align*}
+
+$\\$ Using the quadratic formula to solve for $c$ in both equations we get:
+\begin{align*}
+c &= \frac{b^2 - 8b + 23 \pm \sqrt{b^4 - 16b^3 + 100b^2 - 368b + 481} }{2} \textbf{ (2) }\\
+c &= \frac{14 \pm 2\sqrt{3b^2 - 2^3*3b + 7^2} }{b} \textbf{ (3) }
+\end{align*}
+
+$\\$ There are at most 4 solutions.  By setting both parts equal you can hypothetically get your 4 answers, the math ended up being too complicated and I probably made mistakes and I think there must be a more simple way to do this but oh well. $\endproof$
+
+\newpage
+\section{} I didn't really have any clear idea on how to do this one.
+
+\newpage
+\section{} Let's look at the following sequence of sequences (don't include any numbers with a $9$ digit): $1, \cdots, 9$, $10, \cdots, 99$, $100, \cdots, 999$, $\cdots$.
+
+$\\$ Call the sum of the elements in the first sequence $a$.
+
+$\\$ Take the $n$th sequence of sequences.  Since the numbers are ascending in that sequence, you can always take the first number as an upper bound of the numbers after, so let's do exactly that by taking sets of $10^n$ integers.
+
+$\\$ There will be 8 sets and each set has $9^n$ numbers.
+
+$\\$ So we get the series for each $n$:
+\begin{align*}
+\sum\limits_{i=1}^{8}\frac{9^n}{i 10^n} = \frac{9^n}{10^n}\sum\limits_{i=1}^{8}\frac{1}{i}
+\end{align*}
+
+$\\$ Thus now taking the sum of the sequence of sum of the ssequences, we have a geometric series starting at $a$ and with ratio $9/10$.  $a$ is bounded above by 3 so our series of series is bounded by $30$. $\endproof$
+
+\newpage
+\section{} Assume that the game works as follows: Player A chooses a number and then starting with Player B, each player must subtract a divisor of the current number from the current number to get the next number.  If by subtracting, a player gets to 0 that player loses.  Assume both players play optimally.
+
+$\\$ I thought it was all non-even prime numbers lead to a win for the second player to go but I realized 22 leads to a win for the second player to go.  I'll show my original proof since I already wrote it up anyways:
+
+$\\$ \textbf{Proof:} I'll do a proof by induction.
+
+$\\$ For all $n \ge 1$, I propose that all prime numbers that aren't 2 lead to a win for the second player to go.
+
+$\\$ Base Case: $1, 3, 5$ are the only numbers that lead to a win for the second player to go out of all integers $[1, 5]$.
+
+$\\$ Assume that for all $n < k$ where $k$ is some integer greater than $10$, my proposition holds.  I'll show that this implies the proposition holds for $n+1$.
+
+$\\$ Suppose that $n+1$ is prime, then we know that $n$ is even (which obviously isn't a prime). So by subtracting 1, the first player to go can get to $n$ which by our inductive hypothesis would lead to a win for the first player.  Thus if $n+1$ is prime, then the second player wins.
+
+$\\$ Suppose that $n+1$ is not prime and is odd, then all the divisors of $n+1$ must be odd.  This means the first player to go can only get to even numbers which by our inductive hypothesis will lead to a lose for the first player to go.  Thus if $n+1$ is not prime and odd, then the second player loses.
+
+$\\$ Suppose that $n+1$ is not prime and is even.  I'm not sure whether or not you can get to a prime number from this number.  Sorry this logic is definitely flaud.
+
+
+\newpage
+\section{} First randomly choose 2 dots.  Take the hemisphere that puts both dots on the same side.  This always exists since if you slice the ball along boundary where both dots are, the widest the circumfrance can be for that circle boundary is the circumfrance of the sphere so you can always find a hemisphere that puts both on the same side (it may put both on the boundary).  Now it must be true that 2 out of 3 of the remaining dots are on the same side by what I think is the pigeon hole principle (though that may not actually be what the pigeo hole principle is). $\endproof$
+
+\newpage
+\section{} Let $k$ be the number of mathmaticians which is given to be the same as the the number of muscians.
+
+$\\$ Let $l$ be the number of mathmaticians who are liars (and thus $l$ is also the number of liar muscians since we are given the number of liars in each professional group are the same).
+
+$\\$ Since the total number of mathmaticians is equal to the total number of muscians and each professional group has the same $\#$ of liars and a person is either a liar or truth-sayer, it must be so that there are also the same \# of truth sayers in each professional group and that \# is $k-l$.
+
+$\\$ Now if everyone goes around and says musician, it must be true that before each musician is a truth sayer and before each mathmatician is a liar.
+
+$\\$ Since there are equal \#s of both professional groups, it must mean there also equal numbers of truth sayers as there are liars (since there is a 1 to 1 correspondance between truthsayers and musicans and liars and mathamaticans).
+
+$\\$ This tells us:
+\begin{align*}
+k - l &= l \\
+\iff k &= 2l \\
+\text{so } k \text{ must } &\text{be even} \endproof
+\end{align*}
+
+\newpage
+\section{} I'll first show the case where $n=2$.
+
+$\\$ Assume $a_1 \le a_2$, then (since both are non-negative as well):
+\begin{align*}
+&\underbrace{a_1 + \cdots + a_1} ~~~ + ~~~~\underbrace{a_2 + \cdots + a_2} \\
+&a_2 \text{ instances } ~~~~~~~~~~~~ a_1 \text{ instances} \\
+\le ~~~ &\underbrace{a_1 + \cdots + a_1} ~~~ + ~~~~ \underbrace{a_2 + \cdots + a_2} \\
+&a_1 \text{ instances } ~~~~~~~~~~~~ a_2 \text{ instances} 
+\end{align*}
+
+$\\$ Thus:
+\begin{align*}
+&a_1^2 + a_2^2 \ge 2a_2a_1 \\
+\iff &2a_1a_2 + a_1^2 + a_2^2 \ge 4a_2a_1 \\
+\iff &(a_1 + a_2)^2 \ge 4a_2a_1 \\
+\iff &a_1 + a_2 \ge 2\sqrt{a_2a_1} \\
+\iff &\frac{a_1 + a_2}{2} \ge \sqrt{a_2a_1} \endproof
+\end{align*}
+
+$\\$ I couldn't figure out the inductive proof for the main problem.
+
+\newpage
+\section{} In order for the statement to hold, your set of $n+1$ numbers must either be non-1 prime or composite with no divisors in the set.
+
+$\\$ Take $n$ numbers.  
+
+$\\$ Note there are at most $n$ non-1 prime numbers in the set since all the odd numbers could be prime and you also have the number 2.
+
+$\\$ If everything is a non-1 prime in the set of $n$ numbers, you neccesarily have the number 2.  Now the $n+1$th number chosen must be even since you already chose all the odds.  Thus the $n+1$th number you picked, call it $a_{n+1}$, is divisible by $2$.  So the statement holds.
+
+$\\$ Suppose now the other case that there exists a composite with no divisors in the set of $n$ numbers. If 2 exists also in the set then you are done.  Otherwise, 2 doesn't exist and there must be at least 3 composites with no divisors in the set of $n+1$ integers. I wasn't exactly sure where to go from here.
+
+\newpage
+\section{} I read and understood the Class Guide and will hold myself responsible to it and understood the if I have any unresolved questions/compliants about the class policy, that I will tell you ASAP so we can resolve it.
+
+$\\$ Signature:
+
+$\\$ Date:
+
+\section{} So my understanding is that you are supposed to spend 2 hours doing the entire problem set and then do each problem for however long you feel like after.  I had started the problem set before those instructions were told to me so I in actuality I spent probably 13 hours doing the problem set.  I didn't actually look on piazza for any question except the AM-GM inequality question which I accidently read before I did involves induction (though I'm pretty sure that was how I was gonna approach the second half anyways).
+
+$\\$ I thought the word problems were easier/more approachable (perhaps this was because I wasn't put off by thinking it might involve theorems I didn't remember).  In particular, I found the first 3 difficult, maybe I just didn't remember the correct theorems.
+
+\end{document}

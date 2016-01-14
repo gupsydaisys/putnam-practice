@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithmicx}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algpascal}
+\usepackage{algc}
+\usepackage{tkz-graph}
+\usepackage{verbatim}
+
+\def\Name{Serena Gupta}  % Your name
+\def\SID{22830625}  % Your student ID number
+\def\Homework{4}%Number of Homework
+\def\Session{Fall 2015}
+
+\title{MATH 191 --- Fall 2015 --- Homework \Homework\ Solutions}
+\author{\Name, \SID}
+\markboth{MATH 191 --\Session\  Homework \Homework\ \Name}{\Name,\ \SID\ -------- Math 191 Problem Set \Homework}
+\pagestyle{myheadings}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproof{\text{  } \square}
+\newcommand{\p}[1]{\left(#1\right)}
+\renewcommand{\b}[1]{\left[#1\right]}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\mbp}{\mathbb{P}}
+\renewcommand{\P}[1]{\mathbb{P}\p{#1}}
+\renewcommand{\Pr}{\text{Pr}}
+\newcommand{\E}[1]{\mathbb{E}\b{#1}}
+\newcommand{\Var}[1]{\mathrm{Var}\p{#1}}
+\newcommand{\Cov}[1]{\mathrm{Cov}\p{#1}}
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\F}{\mathcal{F}}
+
+\textheight=9in
+\textwidth=6in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+\begin{document}
+
+$\\$ \textbf{1) } $\textbf{Partial Progress}$ Since $p$ is an even polynomial, we know it achieves a max or a min (depending on the coefficient of the leading term).  Thus for the $n=1$ case, the polynomial isn't surjective since there is a max or min.
+
+$\\$ For n > 1, I don't think you can do an inductive argument with dimensions since it's not clear how n=1 or n=2 generalizes to larger n.
+
+$\\$ Another idea I had was trying to show you always need complex numbers to get some output.  But I wasn't actually sure how to do that except for when the polynomial only had complex roots to get 0.
+
+$\\$ I also thought about using the jordan normal form of the input since taking powers is much easier/readable and it just $A^k=PJ^kP−1$, but I'm not sure how it helps.
+
+\newpage
+$\\$ \textbf{2) } $\textbf{Partial Progress}$ My general approach for the problem was showing that given at least two entries in a row were repeated, you could always find another row to switch columns with in order to strictly improve the situation meaning the number of elements in each row strictly increased.  But I didn't really get time to do it out : (. 
+
+\newpage
+$\\$ \textbf{3) } You have two cases: either the middle number is even or the two outer numbers are even.  If the middle number is even, than mod 2 the outer numbers are 1 but since they are 2 off they can't be divisible by anything that is the same.  And clearly mod any number greater than 2, all three numbers are different.  Thus we have the product of three consecutive numbers that are all perfect squares.  But that's impossible since the difference between any two perfect squares is greater than 2.  If the two outer numbers are even, then they can be written as $2k$ and $2(k+1)$ respectively.  But then $k$ and $k+1$ can't have any common divisors since 2 or anything greater they are different.  Also neither can all three numbers since mod anything greater than 2 they are different which implies that $2k+1$ and $k$ and $k+1$ all don't have any common divisors so each must be a perfect square.  But $k$ and $k+1$ are off by 1 and the difference between any two perfect squares has to be greater than 1.  Thus this is impossible.
+
+\newpage
+$\\$ \textbf{6) } 
+
+$\\$ \textbf{[Cosine from Euler's theorem]} cos($\theta$) = $\frac{1}{2}\p{e^{i\theta} + e^{-i\theta}}$
+
+$\\$ \textbf{[Sine from Euler's theorem]} sin($\theta$) = $\frac{1}{2i}\p{e^{i\theta} - e^{-i\theta}}$
+
+$\\$ \textbf{[Lemma 0]} sin(1) $\approx 0.841468...$
+$\\$\textbf{Proof:} Take the first 4 terms of the Taylor series expansion of sin about $x=1$:
+\begin{align*}
+& \text{sin}(x) = x - \frac{x^3}{3!} + \frac{x^3}{3!} - \frac{x^3}{3!} \\
+&\Rightarrow \text{sin}(1) = 1 - \frac{1}{3!} + \frac{1}{3!} - \frac{1}{3!} \\
+& \qquad \qquad = 0.841468... \endproof
+\end{align*}
+
+$\\$ \textbf{[Lemma 1]} cos(1) $\approx 0.54027777...$
+$\\$\textbf{Proof:} Take the first 4 terms of the Taylor series expansion of cos about $x=1$:
+\begin{align*}
+& \text{cos}(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} \\
+&\Rightarrow \text{cos}(1) = 1 - \frac{1}{2!} + \frac{1}{4!} - \frac{1}{6!}  \\
+& \qquad \qquad = 0.54027777... \endproof
+\end{align*}
+
+$\\$ I finish the proof on the next page (sorry for wasting paper I just couldn't format it properly to all be on the same page!).
+
+$\\$ Now getting to the main proof:
+\begin{align*}
+\int_{0}^{1}cos(\sqrt{x})dx &= \\
+&= \int_{0}^{1} \left ( \frac{e^{i\sqrt{x}} + e^{-i\sqrt{x}} }{2}\right )dx \qquad \textbf{[Cosine from Euler's theorem]}\\
+&= \frac{1}{2} \left ( \int_{0}^{1}e^{i\sqrt{x}}dx + \int_{0}^{1}e^{-i\sqrt{x}}dx\right ) \\
+&= \frac{1}{2} \left ( \int_{0}^{1}2ue^{iu}du + \int_{0}^{1}2ue^{-iu}du\right ) \qquad \textbf{[u-substitution for u is the square root of x]}\\
+&= \int_{0}^{1}ue^{iu}du + \int_{0}^{1}ue^{-iu}du \\
+&= \frac{ue^{iu}}{i}\Big|_0^1 - \int_{0}^{1}\frac{e^{iu}}{i}du - \frac{ue^{-iu}}{i}\Big|_0^1 + \int_{0}^{1}\frac{e^{-iu}}{i}du \qquad \textbf{[integration by parts]}\\
+&= \frac{u(e^{iu} - e^{-iu}}{i}\Big|_0^1 + e^{iu}\Big|_0^1 + e^{-iu}\Big|_0^1 \qquad \textbf{[integration by parts]}\\
+&= \frac{e^{i} - e^{-i}}{i} + (e^{i} + e^{-i}) - 2 \\
+&= \frac{\text{sin}(1)i}{i} + \text{cos}(1) - 2 \qquad \textbf{[Cosine and sine from Euler's theorem]}\\
+&= 2\text{sin}(1) + 2\text{cos}(1) - 2 \\
+&\approx 2(0.841468) + 2(0.54027777) - 2 \qquad \textbf{[Lemma 0 + 1]}\\
+&= \boxed{0.763} \endproof
+\end{align*}
+
+\newpage
+$\\$ \textbf{7) }  $\textbf{Partial Proof: Solved for Dice Biased the same}$ I'll first show that if both dice are biased in the same way than you can't bias the dice to ensure all sums are within $(\frac{2}{33}, \frac{4}{33})$.
+
+$\\$ Assume you can bias the dice to ensure all sums are within  $(\frac{2}{33}, \frac{4}{33})$ and the dice are biased in the same way.
+
+$\\$Assume $P_i$ is the probabiliy you roll $i$. 
+
+$\\$The probability of rolling a 2 is the probabiliy both dice show $1$s and the probabiliy of rolling a 12 is the probability both dice show $6$s.
+
+$\\$ Thus in order for the probability of $1$ and $12$ to be greater than $\frac{2}{33}$, it must be true that $P_1$ and $P_6$ are each strictly greater than $\sqrt{\frac{2}{33}}$.
+
+$\\$ The probability you roll a 7 must be less than $\frac{4}{33}$.
+
+$\\$ The probability of rolling a 7 is $2P_1P_6 + 2P_2P_5 + 2P_3P_4$.
+
+$\\$ Thus we get $2P_1P_6 + 2P_2P_5 + 2P_3P_4 < \frac{4}{33})$ or $P_1P_6 + P_2P_5 + P_3P_4 < \frac{2}{33}$.
+
+$\\$ But if $P_1$ and $P_6$ are each strictly greater than $\sqrt{\frac{2}{33}}$ than $P_1P_6 > \frac{2}{33}$.
+
+$\\$ But that means $P_1P_6 + P_2P_5 + P_3P_4$ can't be strictly less than $\frac{2}{33}$ since each part of the sum is positive and $P_1P_6$ is strictly greater than $\frac{2}{33}$.
+
+$\\$ Thus we have a contradiction and so we can't bias the dice to ensure all sums are within  $(\frac{2}{33}, \frac{4}{33})$ with both dice biased in the same way.
+
+$\\$ $\\$ Now, just assume you can bias the dice to ensure all sums are within $(\frac{2}{33}, \frac{4}{33})$.
+
+$\\$Assume $a_i$ is the probabiliy you roll $i$ on the first dice and $b_i$ is the probabiliy you roll $i$ on the second dice . 
+
+$\\$The probability of rolling a $2$ is the probabiliy both dice show $1$s and the probabiliy of rolling a $12$ is the probability both dice show $6$s, $a_1b_1$ and $a_6b_6$ respectively, where both must be greater than $\frac{2}{33}$.
+
+$\\$ The probability you roll a 7 must be less than $\frac{4}{33}$ by what's given.
+
+$\\$ The probability of rolling a 7 is greater than $a_1b_6 + a_6b_1$ (all the other terms we can lower bound by 0).
+
+$\\$ Note $b_1$ and $b_6$ each can't be 0 or $a_1b_1$ and $a_6b_6$ would not be greater than $\frac{2}{33}$.
+
+$\\$ Substituting in $a_1 > \frac{2}{33b_6}$ and $a_6 > \frac{2}{33b_1}$ into $a_1b_6 + a_6b_1 < \frac{4}{33}$, we get:
+$\frac{2}{33b_1}b_6 + \frac{2}{33b_6}b_1 < \frac{4}{33}$ or  $\frac{2}{33}\p{\frac{b_1}{b_6} + \frac{b_1}{b_6}} < \frac{4}{33}$ or $\p{\frac{b_1}{b_6} + \frac{b_1}{b_6}} < 2$ .
+
+$\\$ Now I know there doesn't exist $x, y$ such that $ x/y + y/x < 2$ and $0 < x < 1$ and $0 < y < 1$ and $x + y \le 1$ so this our statement is false.  But I can't rigurously show this.
+
+\newpage
+\textbf{8) } \textbf{Partial Progress: } First consider that there exists a square that is greater than or equal to 1 by 1.  Clearly you can just use this square to cover the unit square.
+
+$\\$ Now suppose, none are greater than 1 by 1.  Now, I got stuck but my idea was to sort the areas of the finite squares in ascending order and than stack them from top to bottom on the left edge of the unit square till you cover it and then possibly do something else.  Sorry this isn't really a proof just an idea I had.
+
+
+\newpage
+\textbf{9) } Total of 15 hours spent on this.  I spend a lot of time at the end formally writing things up (this probabily isn't a great thing I should work more on doing it as a I go).  I love probability questions so those were fun and I'm not so hot at analysis and algebra problems.  I also didn't read the note about Hall's Theorem till the end so sucks for me for me a bad reader.  Overall, I think I tend to get stuck doing one approach and then have a hard time giving it up so perhaps timing myself when I do that would help.
+
+
+
+\end{document}

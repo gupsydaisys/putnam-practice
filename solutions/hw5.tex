@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithmicx}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algpascal}
+\usepackage{algc}
+\usepackage{tkz-graph}
+\usepackage{verbatim}
+
+\def\Name{Serena Gupta}  % Your name
+\def\SID{22830625}  % Your student ID number
+\def\Homework{5}%Number of Homework
+\def\Session{Fall 2015}
+
+\title{MATH 191 --- Fall 2015 --- Homework \Homework\ Solutions}
+\author{\Name, \SID}
+\markboth{MATH 191 --\Session\  Homework \Homework\ \Name}{\Name,\ \SID\ -------- Math 191 Problem Set \Homework}
+\pagestyle{myheadings}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproof{\text{  } \square}
+\newcommand{\p}[1]{\left(#1\right)}
+\renewcommand{\b}[1]{\left[#1\right]}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\mbp}{\mathbb{P}}
+\renewcommand{\P}[1]{\mathbb{P}\p{#1}}
+\renewcommand{\Pr}{\text{Pr}}
+\newcommand{\E}[1]{\mathbb{E}\b{#1}}
+\newcommand{\Var}[1]{\mathrm{Var}\p{#1}}
+\newcommand{\Cov}[1]{\mathrm{Cov}\p{#1}}
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\F}{\mathcal{F}}
+
+\textheight=9in
+\textwidth=6in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+\begin{document}
+
+$\\$ \textbf{1) } 
+$\\$ \textbf{[Lemma 0]} The most number of steps you have to take to go from one square to another square is 7 steps.
+$\\$ \textbf{Proof: } Define the $1$st ring of a square $s$ as all squares touching $s$ and define the $i$th ring of a square $s$ as all squares touching the $i-1$th ring of $s$ but that aren't in any of the previous rings.  Clearly for any square $s$, it has at most $7$ rings ($7$ if you choose an corner piece for $s$).  Thus via at most $7$ steps you can go from one square to any other square.
+
+$\\$ Getting back to our grand proof, suppose towards a contradiction that there doesn't exist two adjacent squares such the different of the numbers placed on them is at least 9.
+
+$\\$ We know by \textbf{[Lemma 0]} that it takes at most 7 steps to go from the square labeled $1$ to the square labeled $64$.
+
+$\\$ However since the different between two squares is less than 9, each square on the path can at most be 8 greater than the last number.
+
+$\\$ But that means in seven steps, we at most can use the number $1 + 8*7 = 57 < 64$.  
+
+$\\$ Thus it's impossible to ever reach $64$ from $1$ in less than or equal to 7 steps but that's a contradiction.
+
+$\\$ So we know that there must exist two adjacent squares such the different of the numbers placed on them is at least 9 $\endproof$.
+
+
+\newpage
+$\\$ \textbf{3) } \textbf{Partial Proof} Suppose there exists a positive integer $m$ for which $a_m = 0$.
+
+$\\$ First note since $a_1 = f(0)$, \boxed{a_1\text{ is the constant term in }f}.
+
+$\\$ For every $a_i$ for $i > 0$, $a_0$ appears in every term of the sum $a_i$.  
+
+$\\$ Thus \boxed{a_0\text{ divides every }a_i\text{ for }i > 0}.
+
+$\\$ Also since $a_0$ appears in every term of the sum $a_i$, if $a_0 = 0$, then every $a_i$ is 0.
+
+$\\$ So suppose moving forward that $a_0 \ne 0$ and we'll work to show that $a_2 = 0$.
+
+$\\$ We are given that $0 = a_m = f(a_{m-1})$.
+
+$\\$ Since $a_{m-1}$ is an integer, we know using the rational roots theorem that $a_{m-1}$ must divides the constant term of $f$.
+
+$\\$ But the constant term is $a_1$ by the first box, so $a_{m-1}$ divides $a_1$.
+
+$\\$ We also know that $a_0$ divides all $a_i$ where $i > 0$ by the second box, so $a_1$ divides $a_{m-1}$.
+
+$\\$ Since $a_{m-1}$ divides $a_1$ and $a_1$ divides $a_{m-1}$, we know either:
+$\\$ (1) $a_{m-1} = a_1$
+$\\$ (2) $a_{m-1} = - a_1$
+
+$\\$ In (1), we know that $a_2 = f(a_1) = f(a_{m-1}) = 0$ so we get as desired $a_2 = 0$.
+
+$\\$ I wasn't able to figure out (2).
+
+\newpage
+$\\$ \textbf{5) } We can apply Hall's Theorem.  
+
+$\\$ One set consists of the polygons on the back sheet and the other set is the polygons on the front sheet.
+
+$\\$ We want to show that every subset of the polygons on the backsheet, call any subset $B$, cover a set of polygons on the front sheet, $F$, that is at least as big as $B$.
+
+$\\$ Since the total area covered by $B$ is $B$, there must exist at least $B$ polygons on the front sheet in that area since the polygons on both sheets are the same size.
+
+$\\$ Thus by Hall's Theorem, a matching exists between both sets. $\endproof$
+
+\newpage
+\textbf{9) } Total of 10 hours spent on this.  I thought this problem set was a lot harder.  I found boxing insights I have in my scratch work particularly helpful.
+
+
+
+\end{document}

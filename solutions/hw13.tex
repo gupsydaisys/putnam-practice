@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithmicx}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algpascal}
+\usepackage{algc}
+\usepackage{tkz-graph}
+\usepackage{verbatim}
+
+\def\Name{Serena Gupta}  % Your name
+\def\SID{22830625}  % Your student ID number
+\def\Homework{11}%Number of Homework
+\def\Session{Fall 2015}
+
+\title{MATH 191 --- Fall 2015 --- Homework \Homework\ Solutions}
+\author{\Name, \SID}
+\markboth{MATH 191 --\Session\  Homework \Homework\ \Name}{\Name,\ \SID\ -------- Math 191 Problem Set \Homework}
+\pagestyle{myheadings}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproof{\text{  } \square}
+\newcommand{\p}[1]{\left(#1\right)}
+\renewcommand{\b}[1]{\left[#1\right]}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\mbp}{\mathbb{P}}
+\renewcommand{\P}[1]{\mathbb{P}\p{#1}}
+\renewcommand{\Pr}{\text{Pr}}
+\newcommand{\E}[1]{\mathbb{E}\b{#1}}
+\newcommand{\Var}[1]{\mathrm{Var}\p{#1}}
+\newcommand{\Cov}[1]{\mathrm{Cov}\p{#1}}
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\F}{\mathcal{F}}
+
+\textheight=9in
+\textwidth=6in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+\begin{document}
+
+
+$\\$ \textbf{3) } $\textbf{Note}$ First note that hitting someone is the same as just passing through them since with two people the result in the same thing after 1 second and with more than two people you can just group the people walking in the same direction into "1 person" since they will always take the same actions (but I don't think this is even possible anyways).
+
+$\\$ Idetify the people on the platform by being labeled as 1 if they walk left and 0 if they walk right.
+
+$\\$ $\textbf{Lemma}$ If the result after 23 seconds is no one is left on the platform, then the starting configuration must have 1s only in the last 23 spots and 0s only in the first 23 spots.
+$\\$ $\textbf{Proof: }$ Suppose that after 23 seconds, no one is left on the platform.  Further suppose towards a contradiction that the starting configuration has 1s first two spots or 0s in the last 2 spots.  By our note, we know we know there aren't any collisions so each person is just walking in linear line to the end of the platform in the direction described by their numbering so clearly if a 1 is in the first two positions, in 23 seconds it can't make it to the end, and if a 0 is in the last two positions, in 23 seconds it can't make it all the way right. 
+ 
+$\\$ By our lemma, only $2^{n-4}$ starting positions lead to no one on the platform (the first two and last two positions are set and everything in the middle can be either 1 or 0) thus the probability of no one on the platform is $\frac{2^{n-4}}{2^{n}} = \frac{1}{2^{4}}$ thus $15/16$ of the time someone is left on the platform which is greater than $3/4$ of the time. $\endproof$
+
+\newpage
+$\\$ \textbf{5) } The answer is 0.
+
+$\\$ To calculate $p$, given you know the first card, your best strategy is to guess that color since you win $3/4$ of the time (you only lose if both unseen cards are a different color which only occurs $1/4$ the time).
+
+$\\$ To calculate $q$, give you see the first 2 cards, your best strategy is to again guess the color of the first card since you win $3/4$ of the time.  It's obviously symmetrical to guess the color of the second card.  And it's (suprisingly) the same probability to guess color that appears most frequently or a random one if they both appear the same (half the time the colors are the same of the first card and then you always win and half the time the two are different and then any color you pick leads to a win half the time).
+
+\newpage
+$\\$ \textbf{8) } We'll do a proof by induction.
+
+$\\$ Let $P(n)$ be the proposition that if you divide each side of a regular hexagon into n segments, split the hexagon into $6n^2$ equilateral triangles and then 3 make 3 types of diamonds from the triangles, the number of the 3 types of diamonds are equal.
+
+$\\$ Base Case: For n=1, clearly this is true. You create 1 of each type.
+
+$\\$ Induction: Now we'll show if for any $k \ge 1$, $P(k)$ is true that implies $P(k+1)$ is true.
+
+$\\$ Take the hexagon with all it's divisions for $k$ splits and add a layer around it of the $1/k$-size equilateral triangles so that you get another hexagon.  Like so:
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+
+
+$\\$ Our new hexagon has side lengths cut into $k+1$ peices and is split into equalateral traingles.  By our inductive hypothesis we know that the inner hexagon has an equal number of all the 3 types of diamonds.  We have $6n - 3$ diamonds on the outside and WLOG we can always split them into $2n - 1$ equal types by taking two adjacent sides of the hexagon and coloring like so we always get an equal number of each type:
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+$\\$ 
+
+$\\$ And thus we've proven our inductive hypothesis so our proof is done. $\endproof$
+
+
+\newpage
+\textbf{9) } I spent probably 12 or so hours on it and I thought the problems weren't too bad.
+
+\end{document}

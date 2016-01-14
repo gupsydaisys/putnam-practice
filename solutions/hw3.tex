@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithmicx}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algpascal}
+\usepackage{algc}
+\usepackage{tkz-graph}
+\usepackage{verbatim}
+
+\def\Name{Serena Gupta}  % Your name
+\def\SID{22830625}  % Your student ID number
+\def\Homework{3}%Number of Homework
+\def\Session{Fall 2015}
+
+\title{MATH 191 --- Fall 2015 --- Homework \Homework\ Solutions}
+\author{\Name, \SID}
+\markboth{MATH 191 --\Session\  Homework \Homework\ \Name}{\Name,\ \SID\ -------- Math 191 Problem Set \Homework}
+\pagestyle{myheadings}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproof{\text{  } \square}
+\newcommand{\p}[1]{\left(#1\right)}
+\renewcommand{\b}[1]{\left[#1\right]}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\mbp}{\mathbb{P}}
+\renewcommand{\P}[1]{\mathbb{P}\p{#1}}
+\renewcommand{\Pr}{\text{Pr}}
+\newcommand{\E}[1]{\mathbb{E}\b{#1}}
+\newcommand{\Var}[1]{\mathrm{Var}\p{#1}}
+\newcommand{\Cov}[1]{\mathrm{Cov}\p{#1}}
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\F}{\mathcal{F}}
+
+\textheight=9in
+\textwidth=6in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+\begin{document}
+
+$\\$ \textbf{2) } The statement for all $k \in \mathbb{Z}_{> 0}$, for all $n \in \mathbb{Z}_{> 0}$, $n = \sum_{i=1}^{k} e_ii^2$ where $e_i \in \{-1, 1\}$ is false.  A counter example is for $k=1$, clearly $n=10$ fails.
+
+$\\$ Thus the statement I'll work with is for all $n \in \mathbb{Z}_{> 0}$, there exists a $k \in \mathbb{Z}_{> 0}$ such that $n = \sum_{i=1}^{k} e_ii^2$ where $e_i \in \{-1, 1\}$.
+
+$\\$ \textbf{[Lemma 0]} For any 4 consecutive postive integers, x, x+1, x+2, x+3, we can get 4 using the construction $(-1)*(x+1)^2 + (1)*(x+2)^2 + (-1)*(x+3)^2 + (1)*(x+4)^2$
+$\\$\textbf{Proof:}
+$\\$ Take some $x \in \mathbb{Z}_{> 0}$.
+\begin{align*}
+&(1)*(x)^2 + (-1)*(x+1)^2 + (-1)*(x+2)^2 + (1)*(x+3)^2 \\
+&= (1)*(x)^2 + (-1)*(x^2 + 2x + 1)+ (-1)*(x^2 + 4x + 4) + (1)*(x^2 + 6x + 9)\\
+&= x^2 - x^2 - 2x - 1 - x^2 - 4x - 4 + x^2 + 6x + 9 \\
+&= 4 \endproof \\
+\end{align*}
+
+$\\$ Okay now getting back to proving the main statement.  Note that the following is true:
+$\\$ \textbf{[n = 1]} $1 = 1*1$
+$\\$ \textbf{[n = 2]} $2 = (-1)*1 + (-1)*4 + (-1)*9 + (1)*16$
+$\\$ \textbf{[n = 3]} $3 = (-1)*1 + (1)*4$
+$\\$ \textbf{[n = 4]} $4 = (-1)*1 + (-1)*4 + (1)*9$
+
+$\\$ Now take any $n \in \mathbb{Z}_{> 4}$, I'll show you can construct that $n$ using some $k \in \mathbb{Z}_{> 0}$ such that $n = \sum_{i=1}^{k} e_ii^2$ where $e_i \in \{-1, 1\}$. 
+
+$\\$ First let r = $n$ mod $4$.
+
+$\\$ Clearly $r$ is $0, 1, 2,$ or $3$.  Let that remainder correspond to the cases $n$ equals $4, 1, 2,$ or $3$, respectively.
+
+$\\$ So now $n - r$ is some multiple of 4.  Thus for some $m \in \mathbb{Z}_{\ge 0}$, $4m = c + 1 - r$.
+
+$\\$ Now after the $j$ powers in the base cases in which we get $r$, we can take $m$ sets of 4 consecutive integers to get $4m$ because $\textbf{[Lemma 0]}$ holds.
+
+$\\$ Thus we have shown for any $n \in \mathbb{Z}_{> 4}$, we can construct that $n$ using some $k \in \mathbb{Z}_{> 0}$ such that $n = \sum_{i=1}^{k} e_ii^2$ where $e_i \in \{-1, 1\}$. And we already showed explicitly the cases for $n=1,2,3,4$ so our proof is complete. $\endproof$
+
+\newpage
+\textbf{7) } \textbf{[Lemma 0]} $p$ is an even degree polynomial with a positive leading coefficient.
+$\\$\textbf{Proof:} 
+$\\$ Suppose not.
+
+$\\$ $p$ is neccesarily even with a negative leading coefficient, odd with a negative leading coefficient, or odd with a positive leading coefficient.
+
+$\\$ If $p$ is even with a negative leading coefficient, then as $x$ goes to $\infty$, $p(x)$ goes to $-\infty$, which is a contradiction because $p$ is always non-negative.
+
+$\\$ If $p$ is odd with a negative leading coefficient, then as $x$ goes to $\infty$, $p(x)$ goes to $-\infty$, which is a contradiction because $p$ is always non-negative.
+
+$\\$ If $p$ is odd with a positive leading coefficient, then as $x$ goes to $-\infty$, $p(x)$ goes to $-\infty$, which is a contradiction because $p$ is always non-negative. $\endproof$
+
+$\\$ Let $f(x) = \sum_{i=0}^{n} p^{(i)}(x)$.
+
+$\\$ \textbf{[Lemma 1]} $f(x) = p(x) + f'(x)$
+$\\$\textbf{Proof:} Since $f'(x) = \sum_{i=1}^{n} p^{(i)}(x)$, $f(x) = p(x) + f'(x)$. $\endproof$
+
+$\\$ \textbf{[Lemma 2]} $f$ is is an even degree polynomial with a positive leading coefficient
+$\\$\textbf{Proof:}
+$\\$ Since derivatives of a polynomial are of a lesser degree, we know for each integer $i \in [1, n]$, deg$(p^{(i)}(x)) < $deg$(p(x))$.
+
+$\\$ Since $f$ is the sum of a bunch of polynomials and $p$ is strictly the highest degree polynomial in the sum, we know the degree of $f$ is the same as the degree of $p$ and $f$ has the same leading coefficient as $p$.
+
+$\\$ By \textbf{[Lemma 0]}, we know that $p$ is an even degree polynomial with a positive leading coefficient and thus $f$ is an even degree polynomial with a positive leading coefficient. $\endproof$
+
+$\\$ Suppose now that, $f$ is always greater than or equal to 0.  Then, we're done.
+
+$\\$ So now suppose that, $f$ is less than 0 at some point.
+
+$\\$ Since $f$ is an even degree polynomial, it must cross $y=0$ at least twice.
+
+$\\$ Let's label the times $f$ crosses $y=0$ as $x_0, \cdots, x_n$.
+
+$\\$ Let $x_{\text{min}}$ be min of $\{x_0, \cdots, x_n\}$ and $x_{\text{max}}$ be max of $\{x_0, \cdots, x_n\}$.
+
+$\\$ Since $f$ has a postive leading coefficient, for all $x$ outside the interval $[x_{\text{min}}, x_{\text{max}}]$, $f$ is will always be greater.
+
+$\\$ Since $f$ is continuous on a closed bounded interval $[x_{\text{min}}, x_{\text{max}}]$ and f is less than 0 at some point, we know the global minimum on the interval is at some point $z$ where $f'(z) = 0$.
+
+$\\$ We actually know $f(z)$ is the global minimum that this will actually be the global minimum across the entire function since outside that interval $f$ is always greater.
+
+$\\$ Thus for all $x$,
+\begin{align*}
+f(x) &\le f(z) \textbf{[ By the construction of the point z]]} \\
+&= p(z) + f'(z) \textbf{[Lemma 1]]} \\
+&= p(z) + 0 \textbf{[ By the construction of the point z]]} \\
+&\le 0 \textbf{[ We are given p is non-negative]]} \\ 
+\end{align*}
+
+$\\$ $\endproof$
+
+\newpage
+\textbf{9) } I think I probably spent around 20 hours on the problem set, around 7 hours on problem 7.  I think I need to force myself to do ones involving linear algebra since I always do them last and end up not giving them my full effort cause I run out of time.  I use to be scared of polynomial ones but after having spent so much time on the one I did, I no longer feel as scared.  I'm also getting better intuition as how to solve the inductive ones where you prove all positives numbers (or something) are of a particular form.
+
+
+
+\end{document}

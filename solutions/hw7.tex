@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithmicx}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algpascal}
+\usepackage{algc}
+\usepackage{tkz-graph}
+\usepackage{verbatim}
+
+\def\Name{Serena Gupta}  % Your name
+\def\SID{22830625}  % Your student ID number
+\def\Homework{7}%Number of Homework
+\def\Session{Fall 2015}
+
+\title{MATH 191 --- Fall 2015 --- Homework \Homework\ Solutions}
+\author{\Name, \SID}
+\markboth{MATH 191 --\Session\  Homework \Homework\ \Name}{\Name,\ \SID\ -------- Math 191 Problem Set \Homework}
+\pagestyle{myheadings}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproof{\text{  } \square}
+\newcommand{\p}[1]{\left(#1\right)}
+\renewcommand{\b}[1]{\left[#1\right]}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\mbp}{\mathbb{P}}
+\renewcommand{\P}[1]{\mathbb{P}\p{#1}}
+\renewcommand{\Pr}{\text{Pr}}
+\newcommand{\E}[1]{\mathbb{E}\b{#1}}
+\newcommand{\Var}[1]{\mathrm{Var}\p{#1}}
+\newcommand{\Cov}[1]{\mathrm{Cov}\p{#1}}
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\F}{\mathcal{F}}
+
+\textheight=9in
+\textwidth=6in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+\begin{document}
+
+\newpage
+$\\$ \textbf{1) } 
+$\\$ $\textbf{Thoughts: }$ It seems like the answer is only $1, 2, \cdots$ but I'm having trouble proving that.  I tried letting $n_i$ be the first number such that $n_i \ne i$ and showing that leads to a contradiction but that seems difficult.  I also was going to try to show it's increasing, by 1, and show it must start at 1 but that also seems hard.  It's very possible that my proposition is wrong but ya those were my thoughts.
+
+\newpage
+$\\$ \textbf{3) } 
+$\\$ $\textbf{Thoughts: }$ If you compare this to the taylor series expansion of $e$, then you know this sequence goes to $e$ if you can keep all $n$ positive where $1/n = 1/k!$ for all $k$ and then show you can make the rest the terms sum to 0.  I wasn't sure though how to make the terms sum to 0.
+
+\newpage
+$\\$ \textbf{4) } $\boxed{ \text{The determinant is } 0}$.  Let the $i$th row equal $i$th row $- (i+1$)th row and let last equal the last row minus the first row.  Now for each row, add all other rows to it.  You now have the 0 matrix which has determinant 0 and since multiples of rows and columns can be added together without changing the determinant's value, the value of the original matrix is also 0.  I can write this more rigorously using an arbitrary index and showing it's true for that, but that seemed really tedious so I was wondering if my explanation was enough.
+
+\newpage
+$\\$ \textbf{5) } 
+$\\$ $\boxed{\text{B wins and I'm really sorry I accidently threw out my scratch work for this problem!}}$
+
+$\\$ \textbf{[Lemma 0]} If both A and B play optimally, A wins by playing first iff by subtracting 2, 5, or 6, A can get to a number of coins where if A and B both played optimally and the second player to place his tiles would would win.
+
+$\\$ \textbf{Proof of Lemma 0:} Suppose by subtracting 2, 5, or 6 A can gets to a position where the second player to place his tiles would win.  If A chooses this spot, then B will lose so playing optimally A will always choose to recurse to this spot.  Suppose by subtracting 2, 5, or 6 A can only get to a position where the first player to place his tiles would win.  A must choose one of these spots thus B playing optimally will win.  $\endproof$
+
+$\\$ \textbf{[Lemma 1]} Let $x$ be the number of coins on the table when A starts their turn.  If $x \mod 11 \equiv 0, 1, 4, 8$, then B wins if both A and B play optimally.
+
+$\\$ \textbf{Proof of Lemma 1:} We'll prove this statement using induction.
+
+$\\$ For $n \in \textbf{Z}_{\ge 0}$, let $P(n)$ be the proposition that for $n$ coins are on the table when the first player starts their turn and Player A and B play optimally, $n \mod 11 \equiv 0, 1, 4, 8$ iff the second player wins.
+
+$\\$ For $n < 11$, it's easy to see using \textbf{[Lemma 0]} that the second player only wins if $n = 0, 1, 4,$ or $8$ thus our base cases are covered.
+
+$\\$ We now want to show that $P(k)$ is true for all $k > m$ for some $m \ge 11$ implies $P(k+1)$ is true.
+
+$\\$ First note we can rewrite $k+1$ as $11a + b$ for $b \in [0, 10]$.
+
+$\\$ For $b = 0$, the first player can go back to $11a - 2, 11a - 5, 11a - 6$ which are all less than $k+1$ and equivalent to $9, 6, 5$ (respectively) in $\mod 11$ land.  Thus by our inductive hypothesis and using \textbf{[Lemma 0]}, the second player will win.
+
+$\\$ For $b = 1$, the first player can go back to $11a - 1, 11a - 4, 11a - 5$ which are all less than $k+1$ and equivalent to $10, 7, 6$ (respectively) in $\mod 11$ land.  Thus by our inductive hypothesis and using \textbf{[Lemma 0]}, the second player will win.
+
+$\\$ For $b = 2$, the first player can go back to $11a, 11a - 3, 11a - 4$ which are all less than $k+1$ and equivalent to $0, 8, 7$ (respectively) in $\mod 11$ land.  Thus by our inductive hypothesis and using \textbf{[Lemma 0]}, the first player will win.
+
+$\\$ For $b = 3$, the first player can go back to $11a + 1, 11a - 2, 11a - 3$ which are all less than $k+1$ and equivalent to $1, 9, 8$ (respectively) in $\mod 11$ land.  Thus by our inductive hypothesis and using \textbf{[Lemma 0]}, the first player will win.
+
+$\\$ For $b = 4$, the first player can go back to $11a + 2, 11a - 1, 11a - 2$ which are all less than $k+1$ and equivalent to $2, 10, 9$ (respectively) in $\mod 11$ land.  Thus by our inductive hypothesis and using \textbf{[Lemma 0]}, the second player will win.
+
+$\\$ For $b = 5$, the first player can go back to $11a + 3, 11a + 0, 11a - -1$ which are all less than $k+1$ and equivalent to $3, 0, 10$ (respectively) in $\mod 11$ land.  Thus by our inductive hypothesis and using \textbf{[Lemma 0]}, the first player will win.
+
+$\\$ For $b = 6$, the first player can go back to $11a + 4, 11a + 1, 11a - 0$ which are all less than $k+1$ and equivalent to $4, 1, 0$ (respectively) in $\mod 11$ land.  Thus by our inductive hypothesis and using \textbf{[Lemma 0]}, the first player will win.
+
+$\\$ For $b = 7$, the first player can go back to $11a + 5, 11a + 2, 11a - 1$ which /are all less than $k+1$ and equivalent to $5, 2, 1$ (respectively) in $\mod 11$ land.  Thus by our inductive hypothesis and using \textbf{[Lemma 0]}, the firstplayer will win.
+
+$\\$ For $b = 8$, the first player can go back to $11a + 6, 11a + 3, 11a - 2$ which are all less than $k+1$ and equivalent to $6, 3, 2$ (respectively) in $\mod 11$ land.  Thus by our inductive hypothesis and using \textbf{[Lemma 0]}, the second player will win.
+
+$\\$ For $b = 9$, the first player can go back to $11a + 7, 11a + 4, 11a - 3$ which are all less than $k+1$ and equivalent to $7, 4, 3$ (respectively) in $\mod 11$ land.  Thus by our inductive hypothesis and using \textbf{[Lemma 0]}, the first player will win.
+
+$\\$ For $b = 10$, the first player can go back to $11a + 8, 11a + 5, 11a - 4$ which are all less than $k+1$ and equivalent to $8, 5, 4$ (respectively) in $\mod 11$ land.  Thus by our inductive hypothesis and using \textbf{[Lemma 0]}, the first player will win.
+
+$\\$ This completes our inductive proof. Sorry I'm sure there was a cleaner way to do this then just going through all the cases but this works!
+
+$\\$ By \textbf{[Lemma 1]}, since $100 \mod 11$ is $1$, B wins.$ \endproof$
+
+\newpage
+$\\$ \textbf{8) } 
+$\\$ We'll prove this statement using induction.
+
+$\\$ Let $P(n)$ be the proposition that on a $2^n$ by $2^n$ chessboard if you remove one square, the remaining $2^{2n} - 1$ squares can be tiled using L-tiles for $n \in \textbf{Z}_{>0}$.
+
+$\\$ Base Case: For n = 1, if you remove one square from a 2 by 2 board, you have a L-tile so clearly it can be covered by a L-tile.
+
+$\\$ We now want to show that $P(k)$ is true for all $k > m$ for some $m \ge 1$ implies $P(k+1)$ is true.
+
+$\\$ Suppose we have a $2^{k+1}$ by $2^{k+1}$ chessboard.  
+
+$\\$ Firstly, note that a $2^{k+1}$ by $2^{k+1}$ chessboard is the same as 4 $2^{k}$ by $2^{k}$ chessboards so let's split the $2^{k+1}$ by $2^{k+1}$ chessboard into 4 equal size chessboards that are $2^{k}$ by $2^{k}$.
+
+$\\$ We know one of the 4 $2^{k}$ by $2^{k}$ chessboards has a square cut out, and thus that $2^{k}$ by $2^{k}$ chessboard by our inductive hypothesis can be covered by L-tiles.
+
+$\\$ Now in the remaining 3 $2^{k}$ by $2^{k}$ chessboards, cut out their square piece most close the center of the giant $2^{k+1}$ by $2^{k+1}$ chessboard.
+
+$\\$ Clearly each of the 3 $2^{k}$ by $2^{k}$ maimed chessboards (maimed because each has 1 square removed) are by our inductive hypothesis able to be covered by L-tiles.
+
+$\\$ Now note, that the way we chose the 3 squares to cut out, they are in the shape of an L and thus we can cover those 3 squares using a L-tile.
+
+$\\$ Thus we have shown $P(k+1)$ is true.
+
+$\\$ This completes our inductive proof and our statement. $\endproof$ 
+
+\newpage
+\textbf{9) } Total of 4.5 hours.  I feel like I'm getting better at induction and just not putting enough effort into the analysis and algebra questions :( so probably something I should/can work on.
+
+$\\$ A good geometric trueism about determinants is that the determinant of a linear transformation is the signed volume of the region gotten by applying the linear transfromation to the unit cube.
+
+$\\$ I think though the first thing I learned about determinants is that if the determinant of a matrix is non-0, then the system of equations described by the matrix has a unique solution.
+
+$\\$ The most straight forward way to calculate the determinant of a matrix is to do Laplace expansion on the matrix.
+
+$\\$ An important fact when calculating the determinant of a matrix is that multiples of rows and columns can be added together without changing the determinant's value.
+
+$\\$ I also was thinking that instead of being called super models, they should be called super-duper models.  That's it from me.
+
+
+\end{document}

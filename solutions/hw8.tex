@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{algorithmicx}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algpascal}
+\usepackage{algc}
+\usepackage{tkz-graph}
+\usepackage{verbatim}
+
+\def\Name{Serena Gupta}  % Your name
+\def\SID{22830625}  % Your student ID number
+\def\Homework{7}%Number of Homework
+\def\Session{Fall 2015}
+
+\title{MATH 191 --- Fall 2015 --- Homework \Homework\ Solutions}
+\author{\Name, \SID}
+\markboth{MATH 191 --\Session\  Homework \Homework\ \Name}{\Name,\ \SID\ -------- Math 191 Problem Set \Homework}
+\pagestyle{myheadings}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproof{\text{  } \square}
+\newcommand{\p}[1]{\left(#1\right)}
+\renewcommand{\b}[1]{\left[#1\right]}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\mbp}{\mathbb{P}}
+\renewcommand{\P}[1]{\mathbb{P}\p{#1}}
+\renewcommand{\Pr}{\text{Pr}}
+\newcommand{\E}[1]{\mathbb{E}\b{#1}}
+\newcommand{\Var}[1]{\mathrm{Var}\p{#1}}
+\newcommand{\Cov}[1]{\mathrm{Cov}\p{#1}}
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\F}{\mathcal{F}}
+
+\textheight=9in
+\textwidth=6in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+\begin{document}
+
+\newpage
+$\\$ \textbf{1) } 
+$\\$ $\textbf{Counter Example: }$ Someone gave me a hint on this to look at matrices of size 3 so I'm not sure how much my answer should count but whatever I guess.
+
+$A = \begin{bmatrix}
+0 & 0 & 0 \\ 
+0 & 1 & 0 \\ 
+0 & 0 & 1 \\ 
+\end{bmatrix}$
+
+$B = \begin{bmatrix}
+0 & 1 & 0 \\ 
+0 & 0 & 1 \\ 
+0 & 0 & 0 \\ 
+\end{bmatrix}$
+
+
+\newpage
+$\\$ \textbf{2) } 
+$\\$ $\textbf{Thoughts: }$ I tried mapping it to different common sequences you can make with a coin with known winning outcomes eg geometric distribution with $\pi$ trials.  But I kept running into the problem of $\pi$ being irrational and not knowing what to do with that.  I also tried to write out $\pi$ as a sum but that didn't seem to help either.
+
+\newpage
+$\\$ \textbf{3) } 
+$\\$ $\textbf{Thoughts: }$ My hypothesis is it's true for doubles and false for triples.
+
+\newpage
+$\\$ \textbf{4) } $\textbf{Thoughts: }$ I tried to convert this into a graph problem were the vertices were people and an undirected edge existed if the two people were in the spaceship going there or coming back.  And Using the algorithm that each step you choose the least connected vertex and put into a set $N$ and then remove all neighboring vertices and the chosen vertex and the neighboring vertices edges, I thought I might be able to show the cardinality of $N$ was at least n.  But that was too hard.  I tried inducting on the maximum number of people per craft and the total number of people, but I couldn't figure that out either.
+
+
+\newpage
+$\\$ \textbf{7) } $\textbf{Proof: }$ Let's use the notation that $xy$ or $(x)(y)$ is the equivalent to $|x - y|$.
+$\\$ I'm going to iterate through each step:
+
+$\\$ 1. $[ab, bc, cd, da]$
+
+$\\$ 2. $[(ab)(bc), (bc)(cd), (cd)(da), (da)(ab)]$
+
+$\\$ 3. $[((ab)(bc))((bc)(cd)), ((bc)(cd))((cd)(da)), ((cd)(da))((da)(ab)), ((da)(ab))((ab)(bc))]$
+$\\$ $\le$ $[((ab)(cd)), ((bc)(da)), ((cd)(ab)), ((da)(bc))]$ \qquad \textbf{[Reverse Triangle Inequality]}
+
+$\\$ 4. $[(((ab)(cd))((bc)(da))), (((bc)(da))((cd)(ab))), (((cd)(ab))((da)(bc))), (((da)(bc))((ab)(cd)))]$
+
+$\\$ 5. WLOG we'll just look at the first element of the quandruple since all others are symmetric.  And we get:
+ 
+$\\$ $(((ab)(cd))((bc)(da)))(((bc)(da))((cd)(ab)))$
+
+$\\$ = $(((ab)(cd))((bc)(da)))(((bc)(da))((ab)(cd)))$
+$\\$ = $(((ab)(cd))((bc)(da)))(((ab)(cd))((bc)(da)))$
+$\\$ = 0 $\endproof$.
+
+\newpage
+\textbf{9) } Total of 7 hours.  I thought this problem set was much harder and I feel like I was close to the right answer on a couple (I really really feel like I could have gotten teh graph problem) but couldn't pull through.  In any case, it is what it is.
+
+$\\$ Linearity of expectations is the idea if you have a bunch of mutually independent random variables, the expectation of the sum of a bunch of the random variables is the same as the sum of the expectation of each random variable.  Eg the expectation of the sum of 100 dice rolls.  Using linearity of expe
+
+
+
+
+\end{document}
